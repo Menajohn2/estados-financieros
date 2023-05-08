@@ -1,0 +1,1028 @@
+---INSTALADOR---
+GO
+/****** Object:  StoredProcedure [dbo].[ListarCategorias]    Script Date: 05/05/2023 15:28:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-----------------------------------PROCEDIMIENTOS ALMACENADOS---------------------- 
+-----LISTAR CATEGORIAS
+CREATE proc [dbo].[ListarCategorias] 
+as
+select *from CATEGORIAS order by CATEGORIA asc
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ListarMarcas]    Script Date: 05/05/2023 15:28:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-----LISTAR MARCAS
+CREATE proc [dbo].[ListarMarcas]
+as
+select *from MARCAS order by MARCA asc
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ListarProductos]    Script Date: 05/05/2023 15:32:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-----LISTAR PRODUCTOS
+CREATE proc [dbo].[ListarProductos]
+as
+select fecha,mov_num,cod_caja,descrip
+ from  saMovimientoCaja
+order by fecha  desc
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ListarProductos1]    Script Date: 05/05/2023 15:33:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-----LISTAR PRODUCTOS
+CREATE proc [dbo].[ListarProductos1]
+as
+select fecha,mov_num,cod_cta,descrip
+ from  saMovimientoBanco
+order by fecha  desc
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalcajas]    Script Date: 05/05/2023 15:33:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[totalcajas]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoCaja
+where  cod_caja=03 and anulado = 'false'
+End
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalcajas1]    Script Date: 05/05/2023 15:34:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[totalcajas1]as
+begin
+
+SELECT  sum(monto_h)-sum(monto_d)  AS totalMcaja
+FROM            saMovimientoCaja
+where  cod_caja=04 and anulado = 'false'
+End
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalcajas2]    Script Date: 05/05/2023 15:34:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[totalcajas2]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoCaja
+where  cod_caja=10 
+End
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalcajas3]    Script Date: 05/05/2023 15:34:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[totalcajas3]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoCaja
+where  cod_caja=09 
+End
+
+
+    
+
+	GO
+/****** Object:  StoredProcedure [dbo].[totalbanco1]    Script Date: 05/05/2023 15:35:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[totalbanco1]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='1181' 
+End
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalbanco10]    Script Date: 05/05/2023 15:35:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[totalbanco10]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='7911' 
+End
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalbanco11]    Script Date: 05/05/2023 15:35:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[totalbanco11]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='7924' 
+End
+
+
+    GO
+/****** Object:  StoredProcedure [dbo].[totalbanco2]    Script Date: 05/05/2023 15:35:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[totalbanco2]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='2231' 
+End
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalbanco3]    Script Date: 05/05/2023 15:35:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[totalbanco3]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='3253' 
+End
+
+
+    
+
+
+	GO
+/****** Object:  StoredProcedure [dbo].[totalbanco4]    Script Date: 05/05/2023 15:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[totalbanco4]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='5841' 
+End
+
+
+    
+
+
+
+	GO
+/****** Object:  StoredProcedure [dbo].[totalbanco5]    Script Date: 05/05/2023 15:36:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[totalbanco5]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='8981' 
+End
+
+
+    
+
+	GO
+/****** Object:  StoredProcedure [dbo].[totalbanco6]    Script Date: 05/05/2023 15:36:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[totalbanco6]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='9987' 
+End
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalbanco7]    Script Date: 05/05/2023 15:36:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[totalbanco7]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='0134' 
+End
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalbanco8]    Script Date: 05/05/2023 15:36:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[totalbanco8]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='60172' 
+End
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[totalbanco9]    Script Date: 05/05/2023 15:36:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[totalbanco9]as
+begin
+
+SELECT  sum(monto_h-monto_d)  AS totalMcaja
+FROM            saMovimientoBanco
+where  cod_cta='7791' 
+End
+
+
+    
+GO
+/****** Object:  StoredProcedure [dbo].[zordendepagom]    Script Date: 05/05/2023 15:37:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<JOHN MENA>
+-- Create date: <27-04-23>
+-- Description:	<zordendepagom>
+-- =============================================
+--procedimiento 2
+CREATE procedure [dbo].[zordendepagom]
+
+
+as
+
+ 
+SELECT        ord_num,descrip, cod_ben, fecha, forma_pag 
+FROM            saOrdenPago
+
+
+order by
+fecha desc
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[listar_registros]    Script Date: 05/05/2023 15:37:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[listar_registros]
+as
+select mov_num,descrip,cod_cta,co_cta_ingr_egr,fecha from saMovimientoBanco
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[filtro_busqueda]    Script Date: 05/05/2023 15:38:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<JOHN MENA>
+-- Create date: <27-04-23>
+-- Description:	<filtro_busqueda>
+-- =============================================
+--procedimiento 2
+CREATE procedure [dbo].[filtro_busqueda]
+@filtro varchar (200),
+@cod_cta varchar (200),
+@sCo_fecha_d   DATE,
+@sCo_fecha_h DATE
+as
+ 
+select      mov_num, descrip, cod_cta, co_cta_ingr_egr,fecha
+ FROM            saMovimientoBanco 
+where descrip like @filtro + '%'
+AND ( @cod_cta IS NULL OR  cod_cta like '%'+@cod_cta+'%')
+
+AND (fecha between @sCo_fecha_d AND @sCo_fecha_h)
+
+order by
+fecha desc
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[Zlistar_registroscajam]    Script Date: 05/05/2023 15:38:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[Zlistar_registroscajam]
+as
+select mov_num,descrip,cod_caja,co_cta_ingr_egr,fecha
+ from saMovimientocaja
+ order by fecha  desc
+
+
+
+ GO
+/****** Object:  StoredProcedure [dbo].[zfiltro_busquedacajasm]    Script Date: 05/05/2023 15:39:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<JOHN MENA>
+-- Create date: <27-04-23>
+-- Description:	<filtro_busqueda cajas>
+-- =============================================
+--procedimiento 2
+CREATE procedure [dbo].[zfiltro_busquedacajasm]
+@filtro varchar (200),
+@cod_caja varchar (200),
+@sCo_fecha_d   DATE,
+@sCo_fecha_h DATE
+as
+ 
+select      mov_num, descrip, cod_caja, co_cta_ingr_egr,fecha
+ FROM            saMovimientoCaja 
+where descrip like @filtro + '%'
+AND ( @cod_caja IS NULL OR  cod_caja like '%'+@cod_caja+'%')
+
+AND (fecha between @sCo_fecha_d AND @sCo_fecha_h)
+
+order by
+fecha desc
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[zlistar_reclientesm]    Script Date: 05/05/2023 15:39:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[zlistar_reclientesm]
+ 
+
+AS 
+  
+       SELECT
+           P.cli_des,DC.co_tipo_doc, DC.total_neto * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS total_neto, total_neto/tasa *( CASE WHEN DC.tasa = 1 THEN 0 ELSE 1 END )  as totalusd,
+           DC.saldo * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS saldo,dbo.fechasimple(DC.fec_emis) as fec_emis,
+			DC.observa,DC.nro_doc,tasa 
+                    
+         FROM
+            saDocumentoVenta AS DC
+            INNER JOIN saCliente AS P ON P.co_cli = DC.co_cli
+            INNER JOIN saTipoDocumento AS TP ON TP.co_tipo_doc = DC.co_tipo_doc
+            INNER JOIN saMoneda AS MN ON MN.co_mone = DC.co_mone
+
+			order by fec_emis desc
+			
+
+
+
+			GO
+/****** Object:  StoredProcedure [dbo].[ZRepfiltrocxClienteM]    Script Date: 05/05/2023 15:39:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:          JOHN MENA
+-- Create date: <2023-04-28>
+-- Description:     <Documentos de Venta por Cliente>
+-- =============================================
+CREATE PROCEDURE [dbo].[ZRepfiltrocxClienteM]
+ 
+  @cli_des VARCHAR(200)=NULL,
+  @co_tipo_doc CHAR(6)=NULL,
+  @dFecha_Emis_d DATE,
+  @dFecha_Emis_h DATE
+
+
+AS 
+    BEGIN
+	  SET NOCOUNT ON ;
+	
+		     
+              IF (@co_tipo_doc IS NULL ) 
+            SET @co_tipo_doc = 'FACT'
+			 
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ZRepfiltrocxvendedoresM]    Script Date: 05/05/2023 15:40:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:          JOHN MENA
+-- Create date: <2023-05-03>
+-- Description:     <Documentos de Venta por Cliente>
+-- =============================================
+CREATE PROCEDURE [dbo].[ZRepfiltrocxvendedoresM]
+ 
+  @cli_des VARCHAR(200)=NULL,
+  @co_tipo_doc CHAR(6)=NULL,
+  @dFecha_Emis_d DATE,
+  @dFecha_Emis_h DATE
+
+
+AS 
+    BEGIN
+	  SET NOCOUNT ON ;
+
+		     
+           --  IF (@co_tipo_doc IS NULL ) 
+          --  SET @co_tipo_doc = 'FACT' 
+			 
+            Declare @MonedaBase char(6)
+             Select @MonedaBase = g_moneda from par_emp
+     
+       SELECT 
+	   v.ven_des,COUNT(Case when DC.co_tipo_doc='FACT' then 1  End) AS Facturas, COUNT(Case when DC.co_tipo_doc='N/CR' then 1  End) AS Devoluciones
+		,COUNT(Case when DC.co_tipo_doc='FACT' then 1  End) - COUNT(Case when DC.co_tipo_doc='N/CR' then 1  End) AS ventasefectivas
+		
+        FROM
+            saDocumentoVenta AS DC
+            INNER JOIN saCliente AS P ON P.co_cli = DC.co_cli
+            INNER JOIN saTipoDocumento AS TP ON TP.co_tipo_doc = DC.co_tipo_doc
+            INNER JOIN saMoneda AS MN ON MN.co_mone = DC.co_mone
+			INNER JOIN saVendedor AS v on v.co_ven= dc.co_ven
+        WHERE
+		
+		         ( @cli_des IS NULL OR  cli_des like '%'+@Cli_des+'%') AND
+				((   @co_tipo_doc IS NULL )
+                  OR (  @co_tipo_doc = 'FACT' ) OR (  @co_tipo_doc = 'N/CR' ))
+				 AND ( @dFecha_Emis_d IS NULL OR dbo.fechasimple(DC.fec_emis) >= @dFecha_Emis_d)
+                 AND ( @dFecha_Emis_h IS NULL OR dbo.fechasimple(DC.fec_emis) <= @dFecha_Emis_h) AND
+				 ( @co_tipo_doc IS NULL OR  DC.co_tipo_doc like '%'+@co_tipo_doc+'%') 
+				 AND ((  doc_orig = 'FACT' ) OR (  doc_orig = 'DEVO' ))
+        GROUP BY v.ven_des
+        ORDER BY
+		Facturas desc
+                              
+    END
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ZReplistarvendedoresM]    Script Date: 05/05/2023 15:41:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:          JOHN MENA
+-- Create date: <2023-05-03>
+-- Description:     <Documentos de Venta por Cliente>
+-- =============================================
+CREATE PROCEDURE [dbo].[ZReplistarvendedoresM]
+ 
+  @cli_des VARCHAR(200)=NULL,
+  @co_tipo_doc CHAR(6)=NULL,
+  @dFecha_Emis_d DATE='01/01/2023',
+  @dFecha_Emis_h DATE='01/01/2024'
+
+
+AS 
+    BEGIN
+	  SET NOCOUNT ON ;
+
+		     
+           --  IF (@co_tipo_doc IS NULL ) 
+          --  SET @co_tipo_doc = 'FACT' 
+			 
+            Declare @MonedaBase char(6)
+             Select @MonedaBase = g_moneda from par_emp
+     
+       SELECT 
+	   v.ven_des,COUNT(Case when DC.co_tipo_doc='FACT' then 1  End) AS Facturas, COUNT(Case when DC.co_tipo_doc='N/CR' then 1  End) AS Devoluciones
+		,COUNT(Case when DC.co_tipo_doc='FACT' then 1  End) - COUNT(Case when DC.co_tipo_doc='N/CR' then 1  End) AS ventasefectivas
+		
+        FROM
+            saDocumentoVenta AS DC
+            INNER JOIN saCliente AS P ON P.co_cli = DC.co_cli
+            INNER JOIN saTipoDocumento AS TP ON TP.co_tipo_doc = DC.co_tipo_doc
+            INNER JOIN saMoneda AS MN ON MN.co_mone = DC.co_mone
+			INNER JOIN saVendedor AS v on v.co_ven= dc.co_ven
+        WHERE
+		
+		         ( @cli_des IS NULL OR  cli_des like '%'+@Cli_des+'%') AND
+				((   @co_tipo_doc IS NULL )
+                  OR (  @co_tipo_doc = 'FACT' ) OR (  @co_tipo_doc = 'N/CR' ))
+				 AND ( @dFecha_Emis_d IS NULL OR dbo.fechasimple(DC.fec_emis) >= @dFecha_Emis_d)
+                 AND ( @dFecha_Emis_h IS NULL OR dbo.fechasimple(DC.fec_emis) <= @dFecha_Emis_h) AND
+				 ( @co_tipo_doc IS NULL OR  DC.co_tipo_doc like '%'+@co_tipo_doc+'%') 
+				 AND ((  doc_orig = 'FACT' ) OR (  doc_orig = 'DEVO' ))
+        GROUP BY v.ven_des
+        ORDER BY
+		Facturas desc
+                              
+    END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ZReplistarclientesm]    Script Date: 05/05/2023 15:41:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:          JOHN MENA
+-- Create date: <2023-05-04>
+-- Description:     <Documentos de Venta por Cliente>
+-- =============================================
+CREATE PROCEDURE [dbo].[ZReplistarclientesm]
+ 
+  @cli_des VARCHAR(200)=NULL,
+  @co_tipo_doc CHAR(6)=NULL,
+  @dFecha_Emis_d DATE='01/01/2023',
+  @dFecha_Emis_h DATE='01/01/2024'
+
+
+AS 
+    BEGIN
+	  SET NOCOUNT ON ;
+
+		     
+           --  IF (@co_tipo_doc IS NULL ) 
+          --  SET @co_tipo_doc = 'FACT' 
+			 
+            Declare @MonedaBase char(6)
+             Select @MonedaBase = g_moneda from par_emp
+     
+       SELECT 
+	   p.cli_des,COUNT(Case when DC.co_tipo_doc='FACT' then 1  End) AS Facturas,sum(total_bruto) as total
+		
+        FROM
+            saDocumentoVenta AS DC
+            INNER JOIN saCliente AS P ON P.co_cli = DC.co_cli
+            INNER JOIN saTipoDocumento AS TP ON TP.co_tipo_doc = DC.co_tipo_doc
+            INNER JOIN saMoneda AS MN ON MN.co_mone = DC.co_mone
+			INNER JOIN saVendedor AS v on v.co_ven= dc.co_ven
+        WHERE
+		
+		         ( @cli_des IS NULL OR  cli_des like '%'+@Cli_des+'%') AND
+				((   @co_tipo_doc IS NULL )
+                  OR (  @co_tipo_doc = 'FACT' ) OR (  @co_tipo_doc = 'N/CR' ))
+				 AND ( @dFecha_Emis_d IS NULL OR dbo.fechasimple(DC.fec_emis) >= @dFecha_Emis_d)
+                 AND ( @dFecha_Emis_h IS NULL OR dbo.fechasimple(DC.fec_emis) <= @dFecha_Emis_h) AND
+				 ( @co_tipo_doc IS NULL OR  DC.co_tipo_doc like '%'+@co_tipo_doc+'%') 
+				 AND ((  doc_orig = 'FACT' ) OR (  doc_orig = 'DEVO' ))
+        GROUP BY  p.cli_des
+        ORDER BY
+		Facturas desc
+                              
+    END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ZReplistarproveedores]    Script Date: 05/05/2023 15:42:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:          JOHN MENA
+-- Create date: <2023-05-04>
+-- Description:     <Documentos de Venta por Cliente>
+-- =============================================
+CREATE PROCEDURE [dbo].[ZReplistarproveedores]
+ 
+  @prov_des VARCHAR(200)=NULL,
+  @co_tipo_doc CHAR(6)=NULL,
+  @dFecha_Emis_d DATE='01/01/2023',
+  @dFecha_Emis_h DATE='01/01/2024'
+
+
+AS 
+    BEGIN
+	  SET NOCOUNT ON ;
+
+		     
+           --  IF (@co_tipo_doc IS NULL ) 
+          --  SET @co_tipo_doc = 'FACT' 
+			 
+            Declare @MonedaBase char(6)
+             Select @MonedaBase = g_moneda from par_emp
+     
+       SELECT 
+	   p.prov_des,COUNT(Case when DC.co_tipo_doc='FACT' then 1  End) AS Facturas,sum(total_bruto) as total
+		
+        FROM
+            saDocumentoCompra AS DC
+            INNER JOIN saProveedor AS P ON P.co_prov = DC.co_prov
+            INNER JOIN saTipoDocumento AS TP ON TP.co_tipo_doc = DC.co_tipo_doc
+            INNER JOIN saMoneda AS MN ON MN.co_mone = DC.co_mone
+	    WHERE
+		
+		         ( @prov_des IS NULL OR  prov_des like '%'+@prov_des+'%') AND
+				((   @co_tipo_doc IS NULL )
+                  OR (  @co_tipo_doc = 'FACT' ) OR (  @co_tipo_doc = 'N/CR' ))
+				 AND ( @dFecha_Emis_d IS NULL OR dbo.fechasimple(DC.fec_emis) >= @dFecha_Emis_d)
+                 AND ( @dFecha_Emis_h IS NULL OR dbo.fechasimple(DC.fec_emis) <= @dFecha_Emis_h) AND
+				 ( @co_tipo_doc IS NULL OR  DC.co_tipo_doc like '%'+@co_tipo_doc+'%') 
+				 AND ((  doc_orig = 'FACT' ) OR (  doc_orig = 'DEVO' ))
+        GROUP BY  p.prov_des
+        ORDER BY
+		Facturas desc
+                              
+    END
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[zlistar_reprovedorm]    Script Date: 05/05/2023 15:42:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[zlistar_reprovedorm]
+ 
+
+AS 
+  
+       SELECT
+           P.prov_des,DC.co_tipo_doc, DC.total_neto * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS total_neto, total_neto/tasa *( CASE WHEN DC.tasa = 1 THEN 0 ELSE 1 END )  as totalusd,
+           DC.saldo * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS saldo,dbo.fechasimple(DC.fec_emis) as fec_emis,
+			DC.observa,DC.nro_doc,tasa 
+                    
+         FROM
+            saDocumentoCompra AS DC
+            INNER JOIN saProveedor AS P ON P.co_prov = DC.co_prov
+            INNER JOIN saTipoDocumento AS TP ON TP.co_tipo_doc = DC.co_tipo_doc
+            INNER JOIN saMoneda AS MN ON MN.co_mone = DC.co_mone
+
+			order by fec_emis desc
+			
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[zlistar_articulosm]    Script Date: 05/05/2023 15:42:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[zlistar_articulosm]
+ 
+
+AS 
+  
+        SELECT 
+	       D.co_art,A.art_des,D.stock,D.co_alma,P.monto
+          
+                    
+         FROM
+            saArticulo as A
+			INNER JOIN  saStockAlmacen AS D ON A.co_art = D.co_art
+			INNER JOIN  saArtPrecio AS P ON A.co_art = P.co_art
+
+			where D.stock>0 
+
+		
+            
+
+			order by A.co_art desc
+			
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[zflitrar_articulosm]    Script Date: 05/05/2023 15:43:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[zflitrar_articulosm]
+    
+	 @Aart_des VARCHAR(200)=NULL,
+	 @Aco_alma VARCHAR(200)=NULL
+ 
+
+AS 
+  
+       SELECT 
+	       D.co_art,A.art_des,D.stock,D.co_alma,P.monto
+          
+                    
+         FROM
+            saArticulo as A
+			INNER JOIN  saStockAlmacen AS D ON A.co_art = D.co_art
+			INNER JOIN  saArtPrecio AS P ON A.co_art = P.co_art
+
+
+			where
+			 D.stock>0  and
+			         (  @Aart_des IS NULL OR   A.art_des like '%'+@Aart_des+'%') AND
+	 				 (  @Aco_alma IS NULL OR   D.co_alma like '%'+ @Aco_alma+'%') 
+
+
+		
+            
+
+			order by A.co_art desc
+			
+
+
+
+     
+   
+   GO
+
+/****** Object:  Table [dbo].[CATEGORIAS]    Script Date: 05/05/2023 15:47:39 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CATEGORIAS](
+	[IDCATEG] [int] IDENTITY(1,1) NOT NULL,
+	[CATEGORIA] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IDCATEG] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
+GO
+
+/****** Object:  Table [dbo].[MARCAS]    Script Date: 05/05/2023 15:48:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MARCAS](
+	[IDMARCA] [int] IDENTITY(1,1) NOT NULL,
+	[MARCA] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IDMARCA] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[zlistar_reclientesm]    Script Date: 05/05/2023 15:55:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[zlistar_reclientesm]
+ 
+
+AS 
+  
+       SELECT
+           P.cli_des,DC.co_tipo_doc, DC.total_neto * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS total_neto, total_neto/tasa *( CASE WHEN DC.tasa = 1 THEN 0 ELSE 1 END )  as totalusd,
+           DC.saldo * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS saldo,dbo.fechasimple(DC.fec_emis) as fec_emis,
+			DC.observa,DC.nro_doc,tasa 
+                    
+         FROM
+            saDocumentoVenta AS DC
+            INNER JOIN saCliente AS P ON P.co_cli = DC.co_cli
+            INNER JOIN saTipoDocumento AS TP ON TP.co_tipo_doc = DC.co_tipo_doc
+            INNER JOIN saMoneda AS MN ON MN.co_mone = DC.co_mone
+
+			order by fec_emis desc
+			
+
+
+
+     
+   
+   GO
+/****** Object:  StoredProcedure [dbo].[ZRepfiltrocxClienteM]    Script Date: 05/05/2023 15:55:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:          JOHN MENA
+-- Create date: <2023-04-28>
+-- Description:     <Documentos de Venta por Cliente>
+-- =============================================
+create PROCEDURE [dbo].[ZRepfiltrocxClienteM]
+ 
+  @cli_des VARCHAR(200)=NULL,
+  @co_tipo_doc CHAR(6)=NULL,
+  @dFecha_Emis_d DATE,
+  @dFecha_Emis_h DATE
+
+
+AS 
+    BEGIN
+	  SET NOCOUNT ON ;
+	
+		     
+              IF (@co_tipo_doc IS NULL ) 
+            SET @co_tipo_doc = 'FACT'
+			 
+
+			
+
+   
+            Declare @MonedaBase char(6)
+             Select @MonedaBase = g_moneda from par_emp
+     
+       SELECT 
+	   P.cli_des,DC.co_tipo_doc, DC.total_neto * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS total_neto, total_neto/tasa *( CASE WHEN DC.tasa = 1 THEN 0 ELSE 1 END )  as totalusd,
+           DC.saldo * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS saldo,dbo.fechasimple(DC.fec_emis) as fec_emis,
+			DC.observa,DC.nro_doc,tasa 
+        FROM
+            saDocumentoVenta AS DC
+            INNER JOIN saCliente AS P ON P.co_cli = DC.co_cli
+            INNER JOIN saTipoDocumento AS TP ON TP.co_tipo_doc = DC.co_tipo_doc
+            INNER JOIN saMoneda AS MN ON MN.co_mone = DC.co_mone
+        WHERE
+		
+		         ( @cli_des IS NULL OR  cli_des like '%'+@Cli_des+'%') AND
+				((   @co_tipo_doc IS NULL )
+                  OR (  @co_tipo_doc = 'FACT' ) OR (  @co_tipo_doc = 'AJNA' ) OR (  @co_tipo_doc = 'AJNM' )
+				  OR (  @co_tipo_doc = 'AJPA' ) OR (  @co_tipo_doc = 'AJPM' ) OR (  @co_tipo_doc = 'AVISO' )
+				  OR (  @co_tipo_doc = 'CFXG' ) OR (  @co_tipo_doc = 'COBRO' )OR (  @co_tipo_doc = 'DEVO' )
+				  OR (  @co_tipo_doc = 'IGTF' ) OR (  @co_tipo_doc = 'ISLR' ) OR (  @co_tipo_doc = 'IVAN' )
+				  OR (  @co_tipo_doc = 'IVAP' ) OR (  @co_tipo_doc = 'N/CR' ) OR (  @co_tipo_doc = 'N/DB' )
+				  OR (  @co_tipo_doc = 'PAGO' ))
+				 AND ( @dFecha_Emis_d IS NULL OR dbo.fechasimple(DC.fec_emis) >= @dFecha_Emis_d)
+                 AND ( @dFecha_Emis_h IS NULL OR dbo.fechasimple(DC.fec_emis) <= @dFecha_Emis_h) AND
+				 ( @co_tipo_doc IS NULL OR  DC.co_tipo_doc like '%'+@co_tipo_doc+'%') 
+
+        ORDER BY
+		fec_emis desc
+                              
+    END
+
+
+
+
+
+
+	GO
+/****** Object:  StoredProcedure [dbo].[ZRepfiltrocxproveedorM]    Script Date: 05/05/2023 15:57:17 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:          JOHN MENA
+-- Create date: <2023-04-28>
+-- Description:     <Documentos de Venta por Cliente>
+-- =============================================
+create PROCEDURE [dbo].[ZRepfiltrocxproveedorM]
+ 
+  @prov_des VARCHAR(200)=NULL,
+  @co_tipo_doc CHAR(6)=NULL,
+  @dFecha_Emis_d DATE,
+  @dFecha_Emis_h DATE
+
+
+AS 
+    BEGIN
+	  SET NOCOUNT ON ;
+	
+		     
+             -- IF (@co_tipo_doc IS NULL ) 
+           -- SET @co_tipo_doc = 'FACT'
+			 
+
+			
+
+   
+            Declare @MonedaBase char(6)
+             Select @MonedaBase = g_moneda from par_emp
+     
+       SELECT 
+	   P.prov_des,DC.co_tipo_doc, DC.total_neto * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS total_neto, total_neto/tasa *( CASE WHEN DC.tasa = 1 THEN 0 ELSE 1 END )  as totalusd,
+           DC.saldo * ( CASE WHEN DC.anulado = 1 THEN 0 ELSE 1 END ) AS saldo,dbo.fechasimple(DC.fec_emis) as fec_emis,
+			DC.observa,DC.nro_doc,tasa 
+        FROM
+            saDocumentocompra AS DC
+            INNER JOIN saProveedor AS P ON P.co_prov = DC.co_prov
+            INNER JOIN saTipoDocumento AS TP ON TP.co_tipo_doc = DC.co_tipo_doc
+            INNER JOIN saMoneda AS MN ON MN.co_mone = DC.co_mone
+        WHERE
+		
+		         ( @prov_des IS NULL OR  prov_des like '%'+@prov_des+'%') AND
+				((   @co_tipo_doc IS NULL )
+                  OR (  @co_tipo_doc = 'FACT' ) OR (  @co_tipo_doc = 'AJNA' ) OR (  @co_tipo_doc = 'AJNM' )
+				  OR (  @co_tipo_doc = 'AJPA' ) OR (  @co_tipo_doc = 'AJPM' ) OR (  @co_tipo_doc = 'AVISO' )
+				  OR (  @co_tipo_doc = 'CFXG' ) OR (  @co_tipo_doc = 'COBRO' )OR (  @co_tipo_doc = 'DEVO' )
+				  OR (  @co_tipo_doc = 'IGTF' ) OR (  @co_tipo_doc = 'ISLR' ) OR (  @co_tipo_doc = 'IVAN' )
+				  OR (  @co_tipo_doc = 'IVAP' ) OR (  @co_tipo_doc = 'N/CR' ) OR (  @co_tipo_doc = 'N/DB' )
+				  OR (  @co_tipo_doc = 'PAGO' ))
+				 AND ( @dFecha_Emis_d IS NULL OR dbo.fechasimple(DC.fec_emis) >= @dFecha_Emis_d)
+                 AND ( @dFecha_Emis_h IS NULL OR dbo.fechasimple(DC.fec_emis) <= @dFecha_Emis_h) AND
+				 ( @co_tipo_doc IS NULL OR  DC.co_tipo_doc like '%'+@co_tipo_doc+'%') 
+
+        ORDER BY
+		fec_emis desc
+                              
+    END
+
+
+
+
+
+
